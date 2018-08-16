@@ -10,6 +10,8 @@ import { environment } from './../environments/environment';
 /** Feature modules **/
 import {CoreModule} from './core/core.module';
 import {AuthModule} from './auth/auth.module';
+import {AdminModule} from './admin/admin.module';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -18,6 +20,7 @@ import {AuthModule} from './auth/auth.module';
     BrowserModule,
     CoreModule,
     AuthModule,
+    AdminModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
   ],

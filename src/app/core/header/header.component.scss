@@ -1,3 +1,11 @@
 .dropdown-toggle{
   cursor:pointer;
 }
+
+.item-auth{
+  color: rgba(255, 255, 255, 0.5);
+  .nav-link{
+    display: inline-block;
+  }
+}
+

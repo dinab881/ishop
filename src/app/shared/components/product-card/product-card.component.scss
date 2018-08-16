@@ -1,0 +1,14 @@
+.card{
+  position:relative;
+  .ico{
+    position:absolute;
+    width:4rem;
+    height:4rem;
+    top:0.4rem;
+    right:0.4rem;
+    background:url('/assets/images/bestseller.png');
+    background-size: cover;
+  }
+}
+
+

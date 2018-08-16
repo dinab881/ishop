@@ -4,8 +4,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AuthFormComponent } from './components/auth-form/auth-form.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {AuthService} from './services/auth.service';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+
 
 @NgModule({
   imports: [
@@ -20,9 +22,13 @@ import {AuthService} from './services/auth.service';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule.forRoot().ngModule,
-    AuthFormComponent
+    AuthFormComponent,
+    ProductCardComponent,
+    ReactiveFormsModule,
+    FormsModule
+
   ],
-  declarations: [AuthFormComponent],
+  declarations: [AuthFormComponent, ProductCardComponent],
   providers: [ AuthService]
 })
 export class SharedModule { }
