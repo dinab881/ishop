@@ -10,7 +10,6 @@ import { environment } from './../environments/environment';
 /** Feature modules **/
 import {CoreModule} from './core/core.module';
 import {AuthModule} from './auth/auth.module';
-import {AdminModule} from './admin/admin.module';
 import {ShopModule} from './shop/shop.module';
 import { BgImageDirective } from './shared/directives/bg-image.directive';
 
@@ -24,7 +23,6 @@ import { BgImageDirective } from './shared/directives/bg-image.directive';
     BrowserModule,
     CoreModule,
     AuthModule,
-    AdminModule,
     ShopModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),

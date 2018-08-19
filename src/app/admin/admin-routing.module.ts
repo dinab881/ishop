@@ -8,9 +8,8 @@ import { ProductFormComponent } from './product-form/product-form.component';
 
 const routes: Routes = [
   {
-    path: 'admin',
+  path: '',
     children: [
-      { path: '', pathMatch: 'full', redirectTo: 'products' },
       { path: 'products', component: AdminProductsComponent, canActivate: [AuthGuardService, AdminGuardService] },
       { path: 'products/new', component: ProductFormComponent, canActivate: [AuthGuardService, AdminGuardService] },
       { path: 'products/:id', component: ProductFormComponent, canActivate: [AuthGuardService, AdminGuardService] }

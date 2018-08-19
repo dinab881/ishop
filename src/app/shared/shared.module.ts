@@ -10,7 +10,7 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 
 import {  RouterModule } from '@angular/router';
 
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 import { BestSellersComponent } from './components/best-sellers/best-sellers.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
@@ -22,7 +22,7 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     ReactiveFormsModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    BrowserAnimationsModule,
+
     NgbModule.forRoot()
   ],
   exports: [
