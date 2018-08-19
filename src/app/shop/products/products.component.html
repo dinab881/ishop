@@ -4,15 +4,21 @@
     <shop-menu [category]="categoryKey"></shop-menu>
   </div>
   <div class="col">
-    <breadcrumbs></breadcrumbs>
-    <div *ngIf="categoryProducts.length; else noProducts" class="row">
-      <ng-container *ngFor="let p of categoryProducts; let i = index">
+    <div *ngIf="pagedProducts.length" class="row">
+      <ng-container *ngFor="let p of pagedProducts; let i = index">
         <div class="col-md-6">
           <is-product-card [product]="p"></is-product-card>
         </div>
       </ng-container>
     </div>
-
-    <ng-template #noProducts ><div class="text-center">There are no products in this category</div></ng-template>
+    <pagination
+      (goPage)="goToPage($event)"
+      (goNext)="onNext()"
+      (goPrev)="onPrev()"
+      [pagesToShow]="3"
+      [page]="page"
+      [perPage]="limit"
+      [count]="total"></pagination>
   </div>
 </div>
+

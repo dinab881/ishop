@@ -15,7 +15,13 @@ export class ProductsComponent implements OnInit, OnDestroy {
   products: Product[] = [];
   categoryKey: string;
   categoryProducts: Product[] = [];
+  pagedProducts: Product[] = [];
   subscription: Subscription;
+  total = 0;
+  page = 1;
+  limit = 2;
+
+
 
   constructor(
     private route: ActivatedRoute,
@@ -35,11 +41,38 @@ export class ProductsComponent implements OnInit, OnDestroy {
       this.categoryProducts = (this.categoryKey) ?
         this.products.filter(p => p.category === this.categoryKey) :
         this.products;
+      this.total = this.categoryProducts.length;
+      console.log('total', this.total);
+      this.getPagedProducts();
     });
 
   }
+  getPagedProducts(){
+    const startIndex = (this.page - 1) * this.limit;
+    const endIndex = Math.min(startIndex + this.limit - 1, this.total - 1);
+    console.log(startIndex);
+    console.log(endIndex);
+
+    this.pagedProducts = this.categoryProducts.slice(startIndex, endIndex + 1);
+  }
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  goToPage(n: number): void {
+    this.page = n;
+    this.getPagedProducts();
+
+  }
+
+  onNext(): void {
+    this.page++;
+    this.getPagedProducts();
+  }
+
+  onPrev(): void {
+    this.page--;
+    this.getPagedProducts();
   }
 
 }

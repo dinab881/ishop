@@ -53,9 +53,7 @@ width:100%;
 */
 .item{
  position:relative;
-.carousel-wrapper{
-  height:400px;
-}
+
 
 }
 .item img{
@@ -71,8 +69,11 @@ width:100%;
 }
 .item-carousel{
 display: block;
+  position:relative;
   width:100%;
-
+margin:0;
+  padding:0;
+  height:inherit;
 }
 
 .carousel-control-prev, .carousel-control-next {

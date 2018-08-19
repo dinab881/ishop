@@ -23,7 +23,6 @@
         </a>
         <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
           <ng-container *ngIf="user.isAdmin">
-          <a class="dropdown-item" routerLink="/admin/categories">Manage categories</a>
           <a class="dropdown-item" routerLink="/admin/products">Manage products</a>
           </ng-container>
           <a class="dropdown-item" (click) = "logout()">Logout</a>
