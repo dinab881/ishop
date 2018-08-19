@@ -1,0 +1,17 @@
+.sidebar.bg-dark .nav-link {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.sidebar.bg-dark .nav-link:hover, .sidebar.bg-dark .nav-link:focus, .sidebar.bg-dark .nav-link.active {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.sidebar{
+  border-radius:0.2rem;
+  padding-top:1rem;
+  padding-bottom:1rem;
+
+  .nav-item:first-child a{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  }
+}

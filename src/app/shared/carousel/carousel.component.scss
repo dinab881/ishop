@@ -1,0 +1,30 @@
+
+
+.carousel-wrapper {
+  overflow: hidden;
+  position:relative;
+  height:400px;
+  background:yellow;
+}
+
+.carousel-inner{
+ /* background:pink;*/
+  display:block;
+  padding:0;
+}
+.dot-control{
+  position:absolute;
+  bottom:5px;
+  text-align:center;
+  width:100%;
+}
+
+.dot-control a{
+  display:inline-block;
+  width:8px;
+  height:8px;
+  background:red;
+  border-radius:100%;
+  margin: 0 4px;
+}
+

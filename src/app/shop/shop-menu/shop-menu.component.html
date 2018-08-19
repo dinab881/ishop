@@ -1,0 +1,22 @@
+<nav class="bg-dark sidebar">
+  <div class="sidebar-sticky">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="!categoryKey" routerLink="/products"
+      >All Categories</a>
+
+      </li>
+      <li class="nav-item" *ngFor="let cat of categories$ | async">
+        <a class="nav-link"
+           [routerLink]="['/products/', cat.key]"
+
+
+        [class.active]="category === cat.key">
+          {{ cat.name }}
+        </a>
+
+      </li>
+      </ul>
+</div>
+</nav>
+

@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {urlValidator} from '../../shared/validators/url.validator';
 import {minNumberValidator} from '../../shared/validators/min-number.validator';
 import {Router, ActivatedRoute} from '@angular/router';
 import {ProductService} from '../../shared/services/product.service';
@@ -47,7 +46,7 @@ export class ProductFormComponent implements OnInit {
       title: ['', [Validators.required]],
       price: ['', [Validators.required, minNumberValidator(0)]],
       category: ['', [Validators.required]],
-      imageUrl: ['', [Validators.required, Validators.pattern('(http(s?):)([\/|.|\\w|\\s|-])*\\.(?:jpg|gif|png|jpeg)')]],
+      imageUrl: ['', [Validators.required, Validators.pattern('(http(s?):)|([/|.|\\w|\\s])*\\.(?:jpg|gif|png|jpeg)')]],
       isBestseller: [false]
 
     });

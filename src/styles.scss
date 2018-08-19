@@ -31,4 +31,52 @@ main{
     background-size: cover;
   }
 }
+/*
+.item {
+  padding: 0;
+width:100%;
+  background-color: crimson;
+  color: #fff;
+  font-size: 50px;
+  line-height: 300px;
+  text-align: center;
+}
+.item-carousel{
+  width:100%;
+  text-align:center;
+}
 
+.item img {
+ max-width:2000px;
+  max-height:200px;
+}
+*/
+.item{
+ position:relative;
+.carousel-wrapper{
+  height:400px;
+}
+
+}
+.item img{
+  width:100%;
+  height: auto;
+
+
+}
+
+.item span{
+  position:absolute;
+  display:block;
+}
+.item-carousel{
+display: block;
+  width:100%;
+
+}
+
+.carousel-control-prev, .carousel-control-next {
+  background:transparent;
+  border:0;
+  cursor:pointer;
+}

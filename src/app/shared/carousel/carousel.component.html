@@ -1,0 +1,22 @@
+<section class="carousel-wrapper" [ngStyle]="carouselWrapperStyle">
+  <ul class="carousel-inner" #carousel>
+    <li *ngFor="let item of items" class="item-carousel" >
+      <ng-container [ngTemplateOutlet]="item.tpl"></ng-container>
+    </li>
+  </ul>
+  <ol class="carousel-indicators" *ngIf="dotControls">
+    <li *ngFor="let dot of ' '.repeat(items.length).split(''); let i = index" (click)="goTo(i)"></li>
+  </ol>
+  <div class="show-control" *ngIf="showControls">
+    <button (click)="next()" class="carousel-control-next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </button>
+    <button (click)="prev()" class="carousel-control-prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </button>
+  </div>
+</section>
+
+

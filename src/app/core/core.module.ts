@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { CoreRoutingModule } from './core-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { HeaderComponent } from './header/header.component';
+import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -12,7 +14,7 @@ import { HeaderComponent } from './header/header.component';
     SharedModule,
     CoreRoutingModule
   ],
-  exports: [HeaderComponent],
-  declarations: [HeaderComponent]
+  exports: [HeaderComponent, FooterComponent],
+  declarations: [HeaderComponent, HomeComponent, FooterComponent]
 })
 export class CoreModule { }
