@@ -7,8 +7,8 @@ import { Product } from '../../models/product.model';
   styleUrls: ['./product-card.component.scss']
 })
 export class ProductCardComponent implements OnInit {
-  @Input('product') product: Product;
-  @Input('display-buttons') displayButtons = true;
+  @Input() product: Product;
+
 
   constructor() { }
 

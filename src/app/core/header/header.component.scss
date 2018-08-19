@@ -1,11 +1,19 @@
 .dropdown-toggle{
   cursor:pointer;
 }
+.navbar-nav .nav-item:first-child{
+  margin-right: auto;
+}
 
+.navbar-nav{
+  display:flex;
+  width:100%;
+}
 .item-auth{
   color: rgba(255, 255, 255, 0.5);
   .nav-link{
     display: inline-block;
   }
+
 }
 

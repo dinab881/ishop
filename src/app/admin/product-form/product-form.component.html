@@ -82,7 +82,7 @@
           formControlName="imageUrl"
           name="imageUrl"
           id="imageUrl"
-          type="text"
+          type="url"
           class="form-control"
           required>
 
@@ -120,9 +120,9 @@
     </form>
   </div>
   <div class="col-md-4">
-    <div *ngIf="title.value" class="card">
+    <div *ngIf="title.value && title.valid" class="card">
       <div class="ico" *ngIf="isBestseller.value"></div>
-      <img *ngIf="imageUrl.value" class="card-img-top" [src]="imageUrl.value" alt="{{ title.value }}">
+      <img *ngIf="imageUrl.value && imageUrl.valid" class="card-img-top" [src]="imageUrl.value" alt="{{ title.value }}">
       <div class="card-body">
         <h4 class="card-title">{{ title.value }}</h4>
         <p class="card-text">{{ price.value | currency }}</p>

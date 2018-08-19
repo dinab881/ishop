@@ -1,0 +1,18 @@
+
+<div class="row">
+  <div class="col-3">
+    <shop-menu [category]="categoryKey"></shop-menu>
+  </div>
+  <div class="col">
+    <breadcrumbs></breadcrumbs>
+    <div *ngIf="categoryProducts.length; else noProducts" class="row">
+      <ng-container *ngFor="let p of categoryProducts; let i = index">
+        <div class="col-md-6">
+          <is-product-card [product]="p"></is-product-card>
+        </div>
+      </ng-container>
+    </div>
+
+    <ng-template #noProducts ><div class="text-center">There are no products in this category</div></ng-template>
+  </div>
+</div>

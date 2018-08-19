@@ -1,5 +1,7 @@
 .card{
   position:relative;
+  margin-bottom:2rem;
+
   .ico{
     position:absolute;
     width:4rem;
@@ -8,6 +10,13 @@
     right:0.4rem;
     background:url('/assets/images/bestseller.png');
     background-size: cover;
+  }
+  .card-img-top{
+
+    width:100%;
+    height: 250px;
+
+    object-fit: contain;
   }
 }
 
