@@ -18,7 +18,7 @@ export class AdminGuardService implements CanLoad, CanActivate, CanActivateChild
       map(user => !!(user && user.isAdmin)),
       tap(isAdmin => {
         if (!isAdmin) {
-          this.router.navigate(['/']);
+          this.router.navigate(['/products']);
         }
       }));
   }
@@ -29,7 +29,7 @@ export class AdminGuardService implements CanLoad, CanActivate, CanActivateChild
       map(user => !!(user && user.isAdmin)),
       tap(isAdmin => {
         if (!isAdmin) {
-          this.router.navigate(['/']);
+          this.router.navigate(['/products']);
         }
       })
     );
