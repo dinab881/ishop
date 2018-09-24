@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { minNumberValidator } from '../../shared/validators/min-number.validator';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ProductService } from '../../core/services/product.service';
 import { CategoryService } from '../../core/services/category.service';
@@ -57,7 +56,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   createForm() {
     this.productForm = this.fb.group({
       title: ['', [Validators.required]],
-      price: ['', [Validators.required, minNumberValidator(0)]],
+      price: ['', [Validators.required, Validators.min(0)]],
       category: ['', [Validators.required]],
       imageUrl: ['', [Validators.required, Validators.pattern('(http(s?):)|([/|.|\\w|\\s])*\\.(?:jpg|gif|png|jpeg)')]],
       isBestseller: [false]

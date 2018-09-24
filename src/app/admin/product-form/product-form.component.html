@@ -128,7 +128,7 @@
       <img *ngIf="imageUrl.value && imageUrl.valid" class="card-img-top" [src]="imageUrl.value" alt="{{ title.value }}">
       <div class="card-body">
         <h4 class="card-title">{{ title.value }}</h4>
-        <p class="card-text">{{ price.value | currency }}</p>
+        <p *ngIf="price.value && price.valid" class="card-text">{{ price.value | currency }}</p>
       </div>
 
     </div>

@@ -15,7 +15,8 @@
         color: rgba(255, 255, 255, 0.5);
         &:visited,
         &:hover,
-        &:active {
+        &:active,
+        &.active{
           color: rgba(255, 255, 255, 0.75);
         }
       }
