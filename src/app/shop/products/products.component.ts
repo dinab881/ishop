@@ -1,9 +1,9 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {Product} from '../../shared/models/product.model';
-import {ActivatedRoute, ParamMap} from '@angular/router';
-import {ProductService} from '../../shared/services/product.service';
-import {switchMap} from 'rxjs/operators';
-import {Subscription} from 'rxjs';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Product } from '../../shared/models/product.model';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ProductService } from '../../core/services/product.service';
+import { switchMap } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-products',
@@ -11,16 +11,15 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit, OnDestroy {
-
-  products: Product[] = [];
-  categoryKey: string;
-  categoryProducts: Product[] = [];
+  private categoryProducts: Product[] = [];
+  private subscription: Subscription;
   pagedProducts: Product[] = [];
-  subscription: Subscription;
+  categoryKey: string;
   total = 0;
   page = 1;
-  limit = 2;
-
+  limit = 4;
+  pagesToShow = 3;
+  loaded = false;
 
 
   constructor(
@@ -37,34 +36,29 @@ export class ProductsComponent implements OnInit, OnDestroy {
         return this.productService.getAll();
       })
     ).subscribe(products => {
-      this.products = products;
       this.categoryProducts = (this.categoryKey) ?
-        this.products.filter(p => p.category === this.categoryKey) :
-        this.products;
+        products.filter(p => p.category === this.categoryKey) : products;
       this.total = this.categoryProducts.length;
-      console.log('total', this.total);
+      this.loaded = true;
       this.getPagedProducts();
     });
 
   }
-  getPagedProducts(){
-    const startIndex = (this.page - 1) * this.limit;
-    const endIndex = Math.min(startIndex + this.limit - 1, this.total - 1);
-    console.log(startIndex);
-    console.log(endIndex);
 
-    this.pagedProducts = this.categoryProducts.slice(startIndex, endIndex + 1);
-  }
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
+  getPagedProducts() {
+    const startIndex = (this.page - 1) * this.limit;
+    const endIndex = Math.min(startIndex + this.limit - 1, this.total - 1);
+    this.pagedProducts = this.categoryProducts.slice(startIndex, endIndex + 1);
+  }
   goToPage(n: number): void {
     this.page = n;
     this.getPagedProducts();
 
   }
-
   onNext(): void {
     this.page++;
     this.getPagedProducts();

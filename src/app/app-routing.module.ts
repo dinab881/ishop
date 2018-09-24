@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AdminGuardService } from './core/services/admin-guard.service';
 
 const routes: Routes = [
   {
     path: 'admin',
-    loadChildren: '../app/admin/admin.module#AdminModule'
+    loadChildren: '../app/admin/admin.module#AdminModule',
+    canLoad: [AdminGuardService],
+    canActivate: [AdminGuardService]
   }
 ];
 

@@ -1,6 +1,6 @@
 <div class="row">
-  <div class="col-md-5">
-    <div class="auth-form">
+  <div class="col-md-6">
+    <div class="auth-form mt-3">
       <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
         <ng-content select="h1"></ng-content>
 
@@ -60,16 +60,12 @@
 
         <ng-content select=".error"></ng-content>
 
-        <div class="row vertical-align-container">
+        <div class="row">
           <div class="col">
-            <div class="auth-form__action">
-              <ng-content select="button"></ng-content>
-            </div>
+            <ng-content select="button"></ng-content>
           </div>
-          <div class="col text-right">
-            <div class="auth-form__toggle">
-              <ng-content select="a"></ng-content>
-            </div>
+          <div class="col text-right align-self-center">
+            <ng-content select="a"></ng-content>
           </div>
         </div>
 

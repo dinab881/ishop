@@ -3,8 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'auth-form',
-  templateUrl: './auth-form.component.html',
-  styleUrls: ['./auth-form.component.scss']
+  templateUrl: './auth-form.component.html'
 })
 export class AuthFormComponent implements OnInit {
   @Output() submitAuth = new EventEmitter<FormGroup>();

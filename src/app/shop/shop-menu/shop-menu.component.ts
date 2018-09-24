@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {CategoryService} from '../../shared/services/category.service';
+import {CategoryService} from '../../core/services/category.service';
 
 @Component({
   selector: 'shop-menu',

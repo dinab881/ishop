@@ -1,25 +1,31 @@
 <p class="text-right">
-  <a routerLink="/admin/products/new" class="btn btn-primary ">New product</a>
+  <a routerLink="new" class="btn btn-primary ">New product</a>
 </p>
 <p><input
   #word
   (keyup)="filter(word.value)"
   type="text"
   class="form-control"
-  placeholder="Search.."/></p>
+  placeholder="Search.."/>
+</p>
 
 <table class="table">
   <thead>
   <th>Title</th>
   <th>Price</th>
   <th></th>
+  <th></th>
   </thead>
   <tbody>
   <tr *ngFor="let p of searchProducts">
     <td>{{ p.title }}</td>
-
     <td>{{ p.price | currency }}</td>
-    <td><a [routerLink]="['/admin/products/', p.key]">Edit</a></td>
+    <td>
+      <a [routerLink]="['/admin/products/', p.key]">Edit</a>
+    </td>
+    <td>
+      <a [routerLink]="" (click)="delete(p.key)">Delete</a>
+    </td>
   </tr>
   </tbody>
 </table>

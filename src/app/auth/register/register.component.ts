@@ -2,12 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import { Router } from '@angular/router';
 
-import {AuthService} from '../../shared/services/auth.service';
+import {AuthService} from '../../core/services/auth.service';
 
 @Component({
   selector: 'is-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  templateUrl: './register.component.html'
 })
 export class RegisterComponent implements OnInit {
   error: string;

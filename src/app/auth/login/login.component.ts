@@ -1,13 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import { Router } from '@angular/router';
-import {AuthService} from '../../shared/services/auth.service';
+import {AuthService} from '../../core/services/auth.service';
 
 
 @Component({
   selector: 'is-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
   error: string;
