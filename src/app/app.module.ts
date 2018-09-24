@@ -11,13 +11,12 @@ import { environment } from './../environments/environment';
 import {CoreModule} from './core/core.module';
 import {AuthModule} from './auth/auth.module';
 import {ShopModule} from './shop/shop.module';
-import { BgImageDirective } from './shared/directives/bg-image.directive';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    BgImageDirective
+    AppComponent
   ],
   imports: [
     BrowserModule,

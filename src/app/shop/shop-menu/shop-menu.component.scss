@@ -1,17 +1,25 @@
-.sidebar.bg-dark .nav-link {
-  color: rgba(255, 255, 255, 0.5);
-}
+.sidebar {
+  border-radius: 0.2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 
-.sidebar.bg-dark .nav-link:hover, .sidebar.bg-dark .nav-link:focus, .sidebar.bg-dark .nav-link.active {
-  color: rgba(255, 255, 255, 0.75);
-}
+  &.bg-dark {
+    .nav-item{
+      &:first-child{
+        .nav-link{
+          border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        }
+      }
 
-.sidebar{
-  border-radius:0.2rem;
-  padding-top:1rem;
-  padding-bottom:1rem;
-
-  .nav-item:first-child a{
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      .nav-link {
+        color: rgba(255, 255, 255, 0.5);
+        &:visited,
+        &:hover,
+        &:active {
+          color: rgba(255, 255, 255, 0.75);
+        }
+      }
+    }
   }
 }
+

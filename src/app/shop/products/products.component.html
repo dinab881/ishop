@@ -1,24 +1,38 @@
-
 <div class="row">
-  <div class="col-3">
+  <div class="col-lg-3 mb-3">
     <shop-menu [category]="categoryKey"></shop-menu>
   </div>
-  <div class="col">
-    <div *ngIf="pagedProducts.length" class="row">
-      <ng-container *ngFor="let p of pagedProducts; let i = index">
-        <div class="col-md-6">
-          <is-product-card [product]="p"></is-product-card>
+  <div class="col-lg-9">
+    <ng-container *ngIf="loaded; else dataIsLoaded">
+
+      <ng-container *ngIf="pagedProducts.length; else noProducts">
+        <div class="row">
+          <ng-container *ngFor="let p of pagedProducts; let i = index">
+            <div class="col-md-6">
+              <is-product-card [product]="p"></is-product-card>
+            </div>
+          </ng-container>
         </div>
+        <is-pagination
+          (goPage)="goToPage($event)"
+          (goNext)="onNext()"
+          (goPrev)="onPrev()"
+          [pagesToShow]="pagesToShow"
+          [page]="page"
+          [perPage]="limit"
+          [count]="total">
+        </is-pagination>
       </ng-container>
-    </div>
-    <pagination
-      (goPage)="goToPage($event)"
-      (goNext)="onNext()"
-      (goPrev)="onPrev()"
-      [pagesToShow]="3"
-      [page]="page"
-      [perPage]="limit"
-      [count]="total"></pagination>
+
+      <ng-template #noProducts>
+        No products in category yet
+      </ng-template>
+
+    </ng-container>
+
+    <ng-template #dataIsLoaded>
+      Data is loading ...
+    </ng-template>
   </div>
 </div>
 

@@ -1,17 +1,15 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {Product} from '../../shared/models/product.model';
-import {ProductService} from '../../shared/services/product.service';
-import {Observable, Subscription} from 'rxjs';
-import {map} from 'rxjs/operators';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Product } from '../../shared/models/product.model';
+import { ProductService } from '../../core/services/product.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-admin-products',
-  templateUrl: './admin-products.component.html',
-  styleUrls: ['./admin-products.component.scss']
+  templateUrl: './admin-products.component.html'
 })
 export class AdminProductsComponent implements OnInit, OnDestroy {
 
-  products: Product[];
+  private products: Product[];
   subscription: Subscription;
   searchProducts: Product[];
 
@@ -35,7 +33,13 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
     this.searchProducts = (word) ?
       this.products.filter(p => p.title.toLowerCase().includes(word.toLocaleLowerCase())) :
       this.products;
+  }
 
+  delete(productId) {
+    if (!confirm('Are you sure you want to delete this product?')) {
+      return;
+    }
+    this.productService.delete(productId);
   }
 
 }

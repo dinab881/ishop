@@ -1,7 +1,6 @@
 <div class="container">
   <h2>Our bestsellers</h2>
 <div class="row">
-
   <ng-container *ngFor="let p of products$ | async">
     <div class="col-md-4">
       <is-product-card [product]="p"></is-product-card>

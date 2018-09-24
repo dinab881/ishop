@@ -1,22 +1,23 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {minNumberValidator} from '../../shared/validators/min-number.validator';
-import {Router, ActivatedRoute} from '@angular/router';
-import {ProductService} from '../../shared/services/product.service';
-import {CategoryService} from '../../shared/services/category.service';
-import {Product} from '../../shared/models/product.model';
-import {take} from 'rxjs/operators';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { minNumberValidator } from '../../shared/validators/min-number.validator';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { ProductService } from '../../core/services/product.service';
+import { CategoryService } from '../../core/services/category.service';
+import { switchMap, take } from 'rxjs/operators';
+import { of, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-product-form',
-  templateUrl: './product-form.component.html',
-  styleUrls: ['./product-form.component.scss']
+  templateUrl: './product-form.component.html'
 })
-export class ProductFormComponent implements OnInit {
+export class ProductFormComponent implements OnInit, OnDestroy {
   productForm: FormGroup;
   productId: string;
   product = {};
   categories$;
+  subscription: Subscription;
+  loaded = false;
 
 
   constructor(
@@ -31,14 +32,26 @@ export class ProductFormComponent implements OnInit {
   ngOnInit() {
     this.categories$ = this.categoryService.getAll();
     this.createForm();
-    this.productId = this.route.snapshot.paramMap.get('id');
-    if (this.productId) {
-      this.productService.get(this.productId).pipe(take(1)).subscribe(p => {
+    this.subscription = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) => {
+        this.productId = params.get('id');
+        if (this.productId) {
+          return this.productService.get(this.productId);
+        } else {
+          return of(null);
+        }
+      })
+    ).subscribe(p => {
+      if (p !== null) {
         this.product = p;
-        this.productForm.patchValue({ ...this.product });
+        this.productForm.patchValue({...this.product});
+      }
+      this.loaded = true;
+    });
+  }
 
-      });
-    }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   createForm() {
@@ -53,24 +66,19 @@ export class ProductFormComponent implements OnInit {
   }
 
   save() {
-
     if (!this.productForm.valid) return;
+    this.product = {...this.productForm.value};
 
-      this.product = this.productForm.value;
+    if (this.productId) {
+      this.productService.update(this.productId, this.product);
+    } else {
+      this.productService.add(this.product);
+    }
 
-      if (this.productId) {
-        this.productService.update(this.productId, this.product);
-      } else {
-        this.productService.add(this.product);
-      }
-
-      this.router.navigate(['/admin/products']);
+    this.router.navigate(['/admin/products']);
   }
 
-  delete() {
-    if (!confirm('Are you sure you want to delete this product?')) return;
-
-    this.productService.delete(this.productId);
+  cancel() {
     this.router.navigate(['/admin/products']);
   }
 

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { User } from '../models/user.model';
-import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
-import * as firebase from 'firebase';
+import { User } from '../../shared/models/user.model';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Injectable({
   providedIn: 'root'
